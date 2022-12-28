@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div id="home" class="row align-items-center hero scroll_section">
+        <div class="col-lg-3 offset-lg-2" style="margin-top:-100px">
+            <p>Profesor: Marcelo Quinteros</p>
+            <h1>TALLER DE LUTHERIA OESTE</h1>
+            <ul>
+                <li>Reparacion de instrumentos</li>
+                <li>Creación de guitarras, charangos, ukeleles, entre otros</li>
+                <li>Clases de lutheria</li>
+            </ul>
+        </div>
+        <div class="sesion">
+            <h1 style="color: rgb(168, 167, 163)">Bienvenido</h1>
+            {{#if conocido}}
+            <b>Hola {{nombree}}<a href="/salir">Salir</a></b>
+            {{/if}}
+
+            {{#unless conocido}}
+            <b>No te conozco</b>
+            <form action="/ingresar" method="post" style="margin-bottom: 10px; margin-top: 10px;">
+                <input type="text" name="nombree"><button style="margin-left: 10px;">Ingresar</button>
+            </form>
+            {{/unless}}
+        </div>
+    </div>
+</div>

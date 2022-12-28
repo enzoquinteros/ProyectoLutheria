@@ -1,0 +1,63 @@
+<div class="hero" >
+    <div class="container" >
+        <div class="row">
+            <div class="col" style="margin-top: 100px;">
+                <p style="float:right;">
+                    <span>Hola {{persona}}</span>
+                    <a href="/admin/login/logout" class="btn btn-danger">Cerrar sesión<i class="fas
+                    fa-sign-out-alt"></i></a>
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col-7" style="margin-top:-9px ;">
+                <h2>LISTADO DE PRECIOS</h2>
+            </div>
+            <div class="col-2 text-end">
+                <a href="/admin/precios/agregar" class="btn btn-success"><i class="fas fa-plus"></i>Nuevo</a>
+            </div>
+            <div class="col-3 text-end d-flex" >
+                <form class="d-flex" action="/admin/precios" method="get">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{q}}">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="sumbit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table" style="background-color:white;">
+                    <thead>
+                        <tr class="table-dark">
+                            <th scope="col">#</th>
+                            <th scope="col">Titulos</th>
+                            <th scope="col">Imagen</th> 
+                            <th scope="col">Precios</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col" class="text-end">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each precios}}
+                        <tr>
+                            <th scpoe="row">{{id}}</th>
+                            <td>{{nombre}}</td>
+                            <td>{{{imagen}}}</td>
+                            <td>{{precio}}</td>
+                            <td>{{descripcion}}</td>
+                            <td class="text-end">
+                                <a href="/admin/precios/modificar/{{id}}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="/admin/precios/eliminar/{{id}}" class="btn btn-secondary"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{#if is_search}}
+                    {{#unless precios.length}}
+                        No se encontraron resultados para "<b>{{q}}</b>"
+                    {{/unless}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
